@@ -1,0 +1,20 @@
+{
+  "GQL airlinesUK()": {
+    "scope": "javascript",
+    "prefix": "s06",
+    "body": [
+      "query getAirlinesUK {",
+      "  airlinesUK {",
+      "    id",
+      "    name",
+      "    callsign",
+      "    country",
+      "    iata",
+      "    icao",
+      "    type",
+      "  }",
+      "}"
+    ],
+    "description": "Print code for airlinesUK"
+  }
+}

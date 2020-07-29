@@ -1,0 +1,16 @@
+  {
+	"Create Express App & Connect to Couchbase": {
+		"scope": "javascript",
+		"prefix": "s02",
+		"body": [
+      "const app = express()",
+      "app.use(cors())",
+      "const cluster = new couchbase.Cluster('couchbase://localhost', ",
+      "  { username: 'Administrator', password: 'password' }",
+      ")",
+      "const bucket = cluster.bucket('travel-sample')",
+      "const collection = bucket.defaultCollection();"
+		],
+		"description": "Add Express App & Credentials for connection"
+	}
+}

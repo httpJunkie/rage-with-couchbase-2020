@@ -1,0 +1,14 @@
+{
+	"Required packages": {
+		"scope": "javascript",
+		"prefix": "s01",
+		"body": [
+      "const express = require('express')",
+      "const cors = require('cors')",
+      "const { graphqlHTTP } = require('express-graphql')",
+      "const { buildSchema } = require('graphql')",
+      "const couchbase = require('couchbase')"
+		],
+		"description": "Add require statements for our GraphQL Server"
+	}
+}

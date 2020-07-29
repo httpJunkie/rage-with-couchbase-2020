@@ -1,0 +1,34 @@
+{
+  "Define GraphQL Schema": {
+    "scope": "javascript",
+    "prefix": "s03",
+    "body": [
+      "const schema = buildSchema(`",
+      "  type Airline {",
+      "    id: Int,",
+      "    callsign: String,",
+      "    country: String,",
+      "    iata: String,",
+      "    icao: String,",
+      "    name: String",
+      "    type: String",
+      "  }",
+      "  input AirlineInput {",
+      "    callsign: String,",
+      "    country: String,",
+      "    iata: String,",
+      "    icao: String,",
+      "    name: String",
+      "  }",
+      "  type Query {",
+      "    airlinesUK: [Airline],",
+      "    airlineByKey(id: Int!): Airline",
+      "  }",
+      "  type Mutation {",
+      "    updateAirline(id: Int!, input: AirlineInput): Airline",
+      "  }",
+      "`)",
+    ],
+    "description": "Add GraphQL Schema, Types, Inputs, and Mutations using `buildSchema()`"
+  }
+}

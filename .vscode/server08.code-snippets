@@ -1,0 +1,22 @@
+{
+  "GQL updateAirline()": {
+    "scope": "javascript",
+    "prefix": "s08",
+    "body": [
+      "mutation updateExistingAirline(\\$id:Int!, \\$input:AirlineInput) {",
+      "  updateAirline(id:\\$id, input:\\$input){",
+      "    callsign",
+      "    country",
+      "  }",
+      "}",
+      "{",
+      "  \"id\": 112,",
+      "  \"input\": {",
+      "    \"callsign\": \"FLYSTAR\",",
+      "    \"country\": \"United Kingdom\"",
+      "  }",
+      "}"
+    ],
+    "description": "Print code for updateAirline"
+  }
+}

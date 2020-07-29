@@ -1,0 +1,21 @@
+{
+  "Create server, listen on port": {
+    "scope": "javascript",
+    "prefix": "s05",
+    "body": [
+      "const serverPort = 4000",
+      "const serverUrl = '/graphql'",
+      "app.use(serverUrl, graphqlHTTP({",
+      "  schema: schema,",
+      "  rootValue: root,",
+      "  graphiql: true",
+      "}))",
+      "",
+      "app.listen(",
+      "  serverPort, ",
+      "  () => console.log(`GraphQL server running: http://localhost:${serverPort}${serverUrl}`)",
+      ")"
+    ],
+    "description": "Add GraphQL Server and listen to port"
+  }
+}

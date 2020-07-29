@@ -1,0 +1,23 @@
+{
+  "GQL airlineByKey()": {
+    "scope": "javascript",
+    "prefix": "s07",
+    "body": [
+      "query getAirlineByKey(\\$id:Int!) {",
+      "  airlineByKey(id:\\$id) {",
+      "    id",
+      "    name",
+      "    callsign",
+      "    country",
+      "    iata",
+      "    icao",
+      "    type",
+      "  }",
+      "}",
+      "{",
+      "  \"id\": 112",
+      "}"
+    ],
+    "description": "Print code for airlineByKey"
+  }
+}

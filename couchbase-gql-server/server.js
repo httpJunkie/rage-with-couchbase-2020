@@ -89,5 +89,3 @@ app.listen(
   serverPort, 
   () => console.log(`GraphQL server running: http://localhost:serverPortserverUrl`)
 )
-
-count chocula

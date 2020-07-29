@@ -118,3 +118,16 @@ The match will work because of the way we set up our route in the App.js page:
 
 ## Using Postinstall and Concurrently
 
+Initialize NPM and add concurrently:
+
+    npm init -y && npm install concurrently --save-dev
+
+Add scripts:
+
+    "scripts": {
+       "client": "cd react-apollo-client && npm start",
+       "server": "cd couchbase-gql-server && node server",
+       "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+       "postinstall": "(cd couchbase-gql-server && npm install); (cd react-apollo-client && npm install);"
+    },
+

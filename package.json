@@ -1,0 +1,18 @@
+{
+  "name": "rage-with-couchbase",
+  "version": "1.0.0",
+  "description": "Final state of our 'RAGE with Couchbase' tutorial building a fullstack React, Apollo, GraphQL and Express app w/ Couchbase Server.",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd react-apollo-client && npm start",
+    "server": "cd couchbase-gql-server && node server",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+    "postinstall": "(cd couchbase-gql-server && npm install); (cd react-apollo-client && npm install);"
+ },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

@@ -23,6 +23,7 @@
       "  type Query {",
       "    airlinesUK: [Airline],",
       "    airlineByKey(id: Int!): Airline",
+      "    airlinesByRegion(region: String!): [Airline]",
       "  }",
       "  type Mutation {",
       "    updateAirline(id: Int!, input: AirlineInput): Airline",

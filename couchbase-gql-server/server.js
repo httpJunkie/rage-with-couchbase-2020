@@ -35,22 +35,35 @@ const schema = buildSchema(`
   type Query {
     airlinesUK: [Airline],
     airlineByKey(id: Int!): Airline
+    airlinesByRegion(region: String!): [Airline]
   }
   type Mutation {
     updateAirline(id: Int!, input: AirlineInput): Airline
   }
 `)
 
+// Define Resolvers
 const airlinesUkQuery = `
   SELECT airline.* 
   FROM \`travel-sample\` AS airline 
   WHERE airline.type = 'airline'
   AND airline.country = 'United Kingdom'
 `
+const airlinesByRegionQuery = `
+  SELECT airline.* 
+  FROM \`travel-sample\` AS airline 
+  WHERE airline.type = 'airline'
+    AND airline.country = $REGION
+`
 
 const root = {
   airlinesUK: async () => {
     const result = await cluster.query(airlinesUkQuery)
+    return result.rows
+  },
+  airlinesByRegion: async ({region}) => {
+    const options = { parameters: { REGION: region } }
+    const result = await cluster.query(airlinesByRegionQuery, options)
     return result.rows
   },
   airlineByKey: async ({id}) => {
@@ -87,5 +100,5 @@ app.use(serverUrl, graphqlHTTP({
 
 app.listen(
   serverPort, 
-  () => console.log(`GraphQL server running: http://localhost:serverPortserverUrl`)
+  () => console.log(`GraphQL server running: http://localhost:${serverPort}${serverUrl}`)
 )

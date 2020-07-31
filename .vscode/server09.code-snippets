@@ -1,0 +1,23 @@
+{
+  "GQL airlinesByRegion()": {
+    "scope": "javascript",
+    "prefix": "s09",
+    "body": [
+      "query getAirlinesByRegion(\\$region:String!) {",
+      "  airlinesByRegion(region:\\$region) {",
+      "    id",
+      "    name",
+      "    callsign",
+      "    country",
+      "    iata",
+      "    icao",
+      "    type",
+      "  }",
+      "}",
+      "{",
+      "  \"region\": \"United States\"",
+      "}"
+    ],
+    "description": "Print code for airlinesByRegion"
+  }
+}

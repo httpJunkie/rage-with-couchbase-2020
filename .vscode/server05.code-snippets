@@ -13,7 +13,7 @@
       "",
       "app.listen(",
       "  serverPort, ",
-      "  () => console.log(`GraphQL server running: http://localhost:${serverPort}${serverUrl}`)",
+      "  () => console.log(`GraphQL server running: http://localhost:\\${serverPort}\\${serverUrl}`)",
       ")"
     ],
     "description": "Add GraphQL Server and listen to port"

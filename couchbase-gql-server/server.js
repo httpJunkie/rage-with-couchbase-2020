@@ -61,31 +61,91 @@ const root = {
     const result = await cluster.query(airlinesUkQuery)
     return result.rows
   },
+  /*
+query getAirlinesUK {
+  airlinesUK {
+    id
+    name
+    callsign
+    country
+    iata
+    icao
+    type
+  }
+}
+  */
   airlinesByRegion: async ({region}) => {
     const options = { parameters: { REGION: region } }
     const result = await cluster.query(airlinesByRegionQuery, options)
     return result.rows
   },
+    /*
+query getAirlinesByRegion($region: String!) {
+  airlinesByRegion(region:$region) {
+    id
+    name
+    callsign
+    country
+    iata
+    icao
+    type
+  }
+}
+{
+	"region": "{{country}}"
+}
+  */
   airlineByKey: async ({id}) => {
     const result = await collection.get(`airline_${id}`)
     return result.value
   },
+      /*
+query getAirlineByKey($id: Int!) {
+  airlineByKey(id:$id) {
+    id
+    name
+    callsign
+    country
+    iata
+    icao
+    type
+  }
+}
+{
+	"id": {{id}}
+}
+  */
   updateAirline: async ({id, input}) => {
     const result = await collection.get(`airline_${id}`)
 
-    const newDocument = {
-      id: result.value.id,
+    const newDoc = {
+      ...result, 
       callsign: input.callsign ? input.callsign : result.value.callsign,
       country: input.country ? input.country : result.value.country,
       iata: input.iata ? input.iata : result.value.iata,
       icao: input.icao ? input.icao : result.value.icao,
       name: input.name ? input.name : result.value.name,
-      type: result.value.type
-    }
+    };
 
     await collection.upsert(`airline_${id}`, newDocument)
     return newDocument
   }
+      /*
+mutation updateExistingAirline($id:Int!, $input:AirlineInput) {
+  updateAirline(id:$id, input:$input){
+    callsign
+    country
+    iata
+  }
+}
+{
+  "id": 112,
+  "input": {
+    "callsign": "FLYSTAR",
+    "country": "United Kingdom"
+  }
+}
+  */
 }
 
 // the graphqlHTTP function accepts a schema, rootValue and graphiql 
